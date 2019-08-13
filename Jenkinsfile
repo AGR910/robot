@@ -4,17 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+            	echo 'Building....'
+                sh 'mvn clean install'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'cp target/robot.war /webapps'
             }
         }
     }
